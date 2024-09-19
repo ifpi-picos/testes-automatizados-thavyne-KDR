@@ -38,10 +38,8 @@ export default class ContaBancaria {
           throw new Error("Saldo insuficiente para realizar a transferência.");
       }
 
-      // Registrar a transferência antes da operação
       this.registrarOperacao(`Transferência de R$ ${valor.toFixed(2)} para conta ${contaDestino.numeroConta}`);
 
-      // Atualiza os saldos
       this.saldo -= valor;
       contaDestino.receberTransferencia(valor, this.numeroConta);
   }
