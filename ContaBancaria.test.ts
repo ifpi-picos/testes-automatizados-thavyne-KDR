@@ -14,7 +14,6 @@ describe('Testes da classe ContaBancaria', () => {
         conta1.depositar(500);
         expect(conta1.consultarSaldo()).toBe(1500);
 
-        // Verifica apenas a parte relevante da mensagem, ignorando a data e hora
         const extrato = conta1.exibirExtrato();
         expect(extrato[0]).toMatch(/Depósito de R\$ 500.00/);
     });
@@ -34,11 +33,9 @@ describe('Testes da classe ContaBancaria', () => {
     test('Deve realizar transferências entre contas', () => {
         conta1.transferir(200, conta2);
 
-        // Verificar saldos após a transferência
         expect(conta1.consultarSaldo()).toBe(800);
         expect(conta2.consultarSaldo()).toBe(700);
-
-        // Verifica apenas a parte relevante do extrato
+        
         const extratoConta1 = conta1.exibirExtrato();
         expect(extratoConta1[0]).toMatch(/Transferência de R\$ 200.00 para conta 67890/);
 
